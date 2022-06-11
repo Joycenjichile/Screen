@@ -11,7 +11,6 @@ import com.google.android.material.textfield.TextInputLayout
 
 class SignupActivity : AppCompatActivity() {
     lateinit var btnSign:Button
-//    lateinit var etSign:TextInputEditText
     lateinit var tvLogin:TextView
     lateinit var etLogin:TextInputEditText
     lateinit var tilFirst: TextInputLayout
@@ -85,13 +84,31 @@ class SignupActivity : AppCompatActivity() {
 
 
             }
-
+        if (Password !=ConfirmPassword){
 
         }
+       else{tilPass.error="password does not match"
+
+       }
+        if (Password.length<8){
+            tilPass.error="password is too short"
+        }
+        if (Password.length>12){
+            tilPass.error="password is too long"
+        }
+
+
+    }
 
 
 
     }
+
+
+
+
+
+
 
 
 
