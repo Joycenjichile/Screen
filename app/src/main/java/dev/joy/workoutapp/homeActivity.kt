@@ -7,22 +7,24 @@ import androidx.fragment.app.FragmentContainer
 import androidx.fragment.app.FragmentContainerView
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dev.joy.workoutapp.databinding.ActivityHomeBinding
 
 class homeActivity : AppCompatActivity() {
-    lateinit var fcvHome:FragmentContainerView
-    lateinit var btnHome:BottomNavigationView
+    lateinit var binding:ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        binding= ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+//        setContentView(R.layout.activity_home)
         castView()
         setupBottonNav()
     }
     fun castView(){
-        fcvHome= findViewById(R.id.fragmentContainerView)
-        btnHome=findViewById(R.id.bnvHome)
+        binding.fragmentContainerView
+        binding.bnvHome
     }
     fun setupBottonNav(){
-        btnHome.setOnItemSelectedListener { item->
+        binding.bnvHome.setOnItemSelectedListener { item->
             when(item.itemId){
                 R.id.plan->{
                     val  transaction=supportFragmentManager.beginTransaction()

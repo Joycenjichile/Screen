@@ -8,48 +8,28 @@ import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import dev.joy.workoutapp.databinding.ActivityHomeBinding
+import dev.joy.workoutapp.databinding.ActivitySignupBinding
 
 class SignupActivity : AppCompatActivity() {
-    lateinit var btnSign:Button
-    lateinit var tvLogin:TextView
-    lateinit var etLogin:TextInputEditText
-    lateinit var tilFirst: TextInputLayout
-    lateinit var etFirst: TextInputEditText
-    lateinit var tilLast: TextInputLayout
-    lateinit var etLast: TextInputEditText
-    lateinit var tilEmail: TextInputLayout
-    lateinit var etEmail: TextInputEditText
-    lateinit var tilPass: TextInputLayout
-    lateinit var etPass: TextInputEditText
-    lateinit var tilConfirm: TextInputLayout
-    lateinit var etConfirm: TextInputEditText
+    lateinit var binding: ActivitySignupBinding
 
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_signup)
+        binding=ActivitySignupBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
-        tvLogin=findViewById(R.id.tvLogin)
-        etLast=findViewById(R.id.etLast)
-        tilLast=findViewById(R.id.tilLast)
-        etEmail=findViewById(R.id.etEmail)
-        tilEmail=findViewById(R.id.tilEmail)
-        etFirst=findViewById(R.id.etFirst)
-        tilFirst=findViewById(R.id.tilFirst)
-        tilConfirm=findViewById(R.id.tilConfirm)
-        etConfirm=findViewById(R.id.etConfirm)
-        tilPass=findViewById(R.id.tilPass)
-        etPass=findViewById(R.id.etPass)
-        btnSign=findViewById(R.id.btnSign)
 
-        btnSign.setOnClickListener{
+
+       binding.btnSign.setOnClickListener{
             validity()
 
         }
-        tvLogin.setOnClickListener {
+        binding.tvLogin.setOnClickListener {
             val intent= Intent(this,LoginActivity::class.java)
             startActivity(intent)
         }
@@ -59,42 +39,42 @@ class SignupActivity : AppCompatActivity() {
 
 
     fun validity(){
-        val firstName= etFirst.text.toString()
-        val lastName= etLast.text.toString()
-        val email= etEmail.text.toString()
-        var Password=etPass.text.toString()
-        var ConfirmPassword=etConfirm.text.toString()
+        val firstName= binding.etFirst.text.toString()
+        val lastName=binding. etLast.text.toString()
+        val email=binding. etEmail.text.toString()
+        var Password=binding.etPass.text.toString()
+        var ConfirmPassword=binding.etConfirm.text.toString()
 
 
         if (firstName.isBlank()) {
-            tilFirst.error="First Name required"
+           binding. tilFirst.error="First Name required"
         }
         if (lastName.isBlank()) {
-            tilLast.error="Last Name required"
+            binding.tilLast.error="Last Name required"
         }
         if (email.isBlank()) {
-            tilEmail.error="email required"
+           binding. tilEmail.error="email required"
     }
         if (Password.isBlank()) {
-            tilPass.error="Pass required"
+          binding.tilPass.error="Pass required"
 
 }
         if (ConfirmPassword.isBlank()) {
-            tilConfirm.error="confirm required"
+           binding. tilConfirm.error="confirm required"
 
 
             }
         if (Password !=ConfirmPassword){
 
         }
-       else{tilPass.error="password does not match"
+       else{binding.tilPass.error="password does not match"
 
        }
         if (Password.length<8){
-            tilPass.error="password is too short"
+            binding.tilPass.error="password is too short"
         }
         if (Password.length>12){
-            tilPass.error="password is too long"
+           binding. tilPass.error="password is too long"
         }
 
 
